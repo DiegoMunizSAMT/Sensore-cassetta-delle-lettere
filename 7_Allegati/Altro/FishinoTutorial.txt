@@ -1,0 +1,8 @@
+-- Tutorial Fishino con Arduino IDE --
+Tutorial: https://www.fishino.it/arduino-ide-packages-it.html
+
+1. Nel Arduino IDE andare sotto File->Preferences->Settings e nel campo di testo "Additional Boards Manager URLs" scrivere: http://www.fishino.it/arduinoide/package_fishino_index.json.
+2. Andare sotto File->Preferences->Network e configurare il proxy per funzionare con il px (Host name: localhost, Port number: 5865).
+3. Andare sotto Tools->Board->Boards Manager... installare "fishino_avr" e seleziona la board (Fishino UNO).
+4. Assicurarsi il port avvia la COM giusta.
+5. Per testare il funzionamento del fishino andare sotto File->Examples->01.Basics->Blink
