@@ -1,0 +1,5 @@
+- Cambiare il .ini e mettere 0.0.0.0 oppure 192.168. ...
+- Usare host-only
+- Non usare root creare utenti con accessi specifici
+- IP web --> .100
+- IP db --> .101
