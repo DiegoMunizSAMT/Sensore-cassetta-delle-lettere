@@ -11,5 +11,5 @@ Tutorial: https://www.fishino.it/arduino-ide-packages-it.html
 Tutorial: https://youtu.be/32VcKyI0dio
 Src code: https://www.elithecomputerguy.com/2019/07/write-post-data-to-server-with-arduino-uno-with-wifi/
 
-1. Andare sotto Tools->Board->Boards Manager... installare "WiFiNINA" e includere scrivendo nel codice "#include <WiFiNINA.h>".
+1. Andare sotto Tools->Manage Libraries... e installare "WiFiNINA" e includere scrivendo nel codice "#include <WiFiNINA.h>".
 2. 
