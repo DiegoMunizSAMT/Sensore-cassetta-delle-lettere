@@ -3,7 +3,7 @@ USE dbSCL;
 
 CREATE TABLE User
 (
-email TEXT PRIMARY KEY,
+email VARCHAR(320) PRIMARY KEY,
 username TEXT,
 password VARCHAR(100)
 );
@@ -40,7 +40,7 @@ FOREIGN KEY(snsr_id) REFERENCES Sensor(id)
 
 CREATE TABLE UserHasDevice
 (
-user_email INT,
+user_email VARCHAR(320),
 dev_id INT,
 FOREIGN KEY(user_email) REFERENCES User(email),
 FOREIGN KEY(dev_id) REFERENCES Device(id)
@@ -48,8 +48,8 @@ FOREIGN KEY(dev_id) REFERENCES Device(id)
 
 CREATE TABLE NotificationNotifiesUser
 (
-dev_id INT,
-user_email INT,
+notif_id INT,
+user_email VARCHAR(320),
 FOREIGN KEY(notif_id) REFERENCES Notification(id),
 FOREIGN KEY(user_email) REFERENCES User(email)
 );

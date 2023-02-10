@@ -1,0 +1,15 @@
+-- Installazione web2py -- (windows)
+scaricare il pacchetto versione source web2py dal seguente link:
+http://www.web2py.com/init/default/download
+unzippare la cartella
+scaricare ultima versione di pymsql da pypi dal seguente link:
+https://pypi.org/project/PyMySQL
+cambiare la cartella nel percorso \web2py\gluon\contrib\pymysql con quella scaricata
+avviare da terminale con il comando python web2py.py --no-gui
+scegliere una password
+accedere alla pagina con il dominio (127.0.0.1:8000)
+
+-- configurazione db --
+accedere all'interfaccia amministrativa
+modificare il file db.py cambiando il db usare :
+db = DAL('mysql://administrator:Password%261@192.168.56.105:3306/dbSCL?set_encoding=utf8mb4', decode_credentials=True)
