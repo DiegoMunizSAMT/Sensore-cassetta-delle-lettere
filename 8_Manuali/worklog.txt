@@ -35,9 +35,10 @@ if [ "$DIFFPULL" != "0" ]; then
 	git fetch
 	git reset --hard HEAD
 	git merge
-	
+
 	echo "cleanup site folders"
 	rm -r ~/web2py/applications/scl/controllers/
+	rm -r ~/web2py/applications/scl/cron/
 	rm -r ~/web2py/applications/scl/languages/
 	rm -r ~/web2py/applications/scl/models/
 	rm -r ~/web2py/applications/scl/modules/
@@ -46,14 +47,15 @@ if [ "$DIFFPULL" != "0" ]; then
 	rm -r ~/web2py/applications/scl/views/
 
 	echo "copy site folders from repo"
-	cp -r ~/repo/5_Sito\ o\ applicativo/web2py/applications/scl/controllers/ ~/web2py/applications/scl/controllers/
-	cp -r ~/repo/5_Sito\ o\ applicativo/web2py/applications/scl/languages/ ~/web2py/applications/scl/languages/
-	cp -r ~/repo/5_Sito\ o\ applicativo/web2py/applications/scl/models/ ~/web2py/applications/scl/models/
-	cp -r ~/repo/5_Sito\ o\ applicativo/web2py/applications/scl/modules/ ~/web2py/applications/scl/modules/
-	cp -r ~/repo/5_Sito\ o\ applicativo/web2py/applications/scl/private/ ~/web2py/applications/scl/private/
-	cp -r ~/repo/5_Sito\ o\ applicativo/web2py/applications/scl/static/ ~/web2py/applications/scl/static/
-	cp -r ~/repo/5_Sito\ o\ applicativo/web2py/applications/scl/views/ ~/web2py/applications/scl/views/
-	cp ~/repo/5_Sito\ o\ applicativo/web2py/applications/scl/* ~/web2py/applications/scl/	
+	cp -r ~/repo/5_Sito\ o\ applicativo/web2py/applications/scl/controllers ~/web2py/applications/scl/controllers
+	cp -r ~/repo/5_Sito\ o\ applicativo/web2py/applications/scl/cron ~/web2py/applications/scl/cron
+	cp -r ~/repo/5_Sito\ o\ applicativo/web2py/applications/scl/languages ~/web2py/applications/scl/languages
+	cp -r ~/repo/5_Sito\ o\ applicativo/web2py/applications/scl/models ~/web2py/applications/scl/models
+	cp -r ~/repo/5_Sito\ o\ applicativo/web2py/applications/scl/modules ~/web2py/applications/scl/modules
+	cp -r ~/repo/5_Sito\ o\ applicativo/web2py/applications/scl/private ~/web2py/applications/scl/private
+	cp -r ~/repo/5_Sito\ o\ applicativo/web2py/applications/scl/static ~/web2py/applications/scl/static
+	cp -r ~/repo/5_Sito\ o\ applicativo/web2py/applications/scl/views ~/web2py/applications/scl/views
+	cp ~/repo/5_Sito\ o\ applicativo/web2py/applications/scl/* ~/web2py/applications/scl/
 else
 	echo Nothing to update
 fi
