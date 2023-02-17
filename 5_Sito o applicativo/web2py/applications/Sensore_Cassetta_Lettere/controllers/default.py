@@ -6,8 +6,26 @@
 
 # ---- example index page ----
 def index():
-    response.flash = T("Hello World")
-    return dict(message=T('Welcome to web2py!'))
+    response.flash = T("First time on SCL?")
+    return {}
+    
+def notif_list():
+    grid = None
+    try:
+        grid = SQLFORM.grid(db.define_table)
+    except Exception as e:
+        #logging.exception(f'error accessing db')
+        pass
+    return dict(
+    messaggio=['ciao', 'sono', 'una', 'lista', 'di', 'notifiche'],
+    grid=grid
+    )
+    
+def notif_calendar():
+    return {}
+    
+def settings():
+    return {}
 
 # ---- API (example) -----
 @auth.requires_login()

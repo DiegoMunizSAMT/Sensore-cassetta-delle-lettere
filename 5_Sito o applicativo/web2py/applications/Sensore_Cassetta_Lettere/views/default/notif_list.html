@@ -1,0 +1,29 @@
+{{extend 'layout.html'}}
+
+<h1>PAGINA DELLE NOTIFICHE</h1>
+{{=BEAUTIFY(response._vars)}}
+{{=messaggio}}
+
+<ul>
+{{for m in messaggio:}}
+	{{if m == 'ciao':}}
+		<li><span>{{=m}}</span><span class='text-primary'>bella</span>
+	{{else:}}
+		<li>{{=m}}</li>
+	{{pass}}
+	
+	{{#=LI(m)}}
+{{pass}}
+</ul>
+
+<ul>
+{{
+for m in messaggio:	
+	if m == 'ciao':
+		=LI(SPAN(m), SPAN( 'bella', _class='text-primary'))
+	else:
+		=LI(m)
+	pass
+pass
+}}
+</ul>

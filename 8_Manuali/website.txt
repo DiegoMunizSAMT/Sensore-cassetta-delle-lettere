@@ -1,0 +1,18 @@
+-- web2py website --
+
+Nella cartella .\web2py\applications entrare nella cartella di progetto (es. .\web2py\applications\Sensore_Cassetta_Lettere)
+Nella cartella ci sono 4 cartelle principali: controllers e views.
+.\controllers:
+  - default.py -> Dove vengono "istanziate" le pagine web (es. def index() -> index.html).
+  
+.\views:
+  - default\ -> Dove vengono situate le pagine html del controller.
+  - layout.html -> 
+  
+.\static:
+  - * -> Qua ci saranno tutte le risorse static (es. css\, js\, images\, ...).
+  
+.\models:
+  - menu.py ->
+
+Per accedere il sito: <dominio>/<nome progetto> (es. http://127.0.0.1:8000/Sensore_Cassetta_Lettere/default/)
