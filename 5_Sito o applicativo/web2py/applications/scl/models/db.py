@@ -85,8 +85,13 @@ response.form_label_separator = ''
 # (more options discussed in gluon/tools.py)
 # -------------------------------------------------------------------------
 
-#db = DAL('mysql://administrator:Password&1@192.168.56.105:3306/dbSCL?set_encoding=utf8mb4')
-db = DAL('mysql://administrator:Password%261@192.168.56.105:3306/dbSCL?set_encoding=utf8mb4', decode_credentials=True)
+import os
+if 'PYTHONANYWHERE_DOMAIN' in os.environ:
+	#use mysql db
+	db = DAL('mysql://sclSAMT:Password%261@sclSAMT.mysql.pythonanywhere-services.com/sclSAMT$dbscl', decode_credentials=True)
+else:
+	#keep using default sqlite
+	pass
 
 # host names must be a list of allowed host names (glob syntax allowed)
 auth = Auth(db, host_names=configuration.get('host.names'))
