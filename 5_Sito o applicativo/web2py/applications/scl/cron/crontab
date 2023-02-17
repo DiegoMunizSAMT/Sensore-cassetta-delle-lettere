@@ -1,1 +1,2 @@
 #crontab
+*/5 * * * * ~/update.sh
