@@ -2730,3 +2730,45 @@ CREATE TABLE `notificationNotifiesUser`(
     PRIMARY KEY (`id`)
 ) ENGINE=InnoDB CHARACTER SET utf8;
 success!
+timestamp: 2023-02-17T15:38:44.554340
+CREATE TABLE "notification"(
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "content_value" TEXT
+);
+success!
+timestamp: 2023-02-17T15:38:44.580162
+CREATE TABLE "sensor"(
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "hardware_type" CHAR(512),
+    "recored_value" CHAR(1),
+    "arrival_time" TIMESTAMP,
+    "notif_id" INTEGER REFERENCES "notification" ("id") ON DELETE CASCADE ON UPDATE CASCADE  
+);
+success!
+timestamp: 2023-02-17T15:38:44.602975
+CREATE TABLE "device"(
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "model" CHAR(512)
+);
+success!
+timestamp: 2023-02-17T15:38:44.625242
+CREATE TABLE "deviceHasSensor"(
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "dev_id" INTEGER REFERENCES "device" ("id") ON DELETE CASCADE ON UPDATE CASCADE  ,
+    "snsr_id" INTEGER REFERENCES "sensor" ("id") ON DELETE CASCADE ON UPDATE CASCADE  
+);
+success!
+timestamp: 2023-02-17T15:38:44.646891
+CREATE TABLE "userHasDevice"(
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "user_id" INTEGER REFERENCES "auth_user" ("id") ON DELETE CASCADE ON UPDATE CASCADE  ,
+    "dev_id" INTEGER REFERENCES "device" ("id") ON DELETE CASCADE ON UPDATE CASCADE  
+);
+success!
+timestamp: 2023-02-17T15:38:44.668581
+CREATE TABLE "notificationNotifiesUser"(
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "notif_id" INTEGER REFERENCES "notification" ("id") ON DELETE CASCADE ON UPDATE CASCADE  ,
+    "user_id" INTEGER REFERENCES "auth_user" ("id") ON DELETE CASCADE ON UPDATE CASCADE  
+);
+success!
