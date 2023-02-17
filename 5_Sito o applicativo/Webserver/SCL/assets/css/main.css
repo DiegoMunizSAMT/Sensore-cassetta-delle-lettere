@@ -14,7 +14,7 @@ code, del, dfn, em, img, ins, kbd, q, s, samp,
 small, strike, strong, sub, sup, tt, var, b,
 u, i, center, dl, dt, dd, ol, ul, li, fieldset,
 form, label, legend, table, caption, tbody,
-tfoot, thead, tr, th, td, article, aside,
+tfoot, thead, tr, td, article, aside,
 canvas, details, embed, figure, figcaption,
 footer, header, hgroup, menu, nav, output, ruby,
 section, summary, time, mark, audio, video {
@@ -234,6 +234,7 @@ input, select, textarea {
 	.align-right {
 		text-align: right;
 	}
+
 
 /* Loader */
 
@@ -2750,6 +2751,10 @@ input, select, textarea {
 		}
 
 /* Table */
+	table, th, td {
+		border: 1px solid black;
+		border-collapse: collapse;
+ 	}
 
 	.table-wrapper {
 		-webkit-overflow-scrolling: touch;
@@ -2775,12 +2780,11 @@ input, select, textarea {
 			padding: 0.75em 0.75em;
 		}
 
-		table th {
+		table {
 			color: #ffffff;
 			font-size: 0.9em;
 			font-weight: 300;
 			padding: 0 0.75em 0.75em 0.75em;
-			text-align: left;
 		}
 
 		table thead {
@@ -2815,6 +2819,10 @@ input, select, textarea {
 
 			table.alt tfoot {
 				border-top: 0;
+			}
+			th {
+				text-align: center;
+				font-size: 1.1em;
 			}
 
 /* Button */
