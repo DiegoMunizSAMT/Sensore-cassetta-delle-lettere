@@ -8,13 +8,13 @@ boolean oldVal = 0;
 
 void loop() {
   digitalWrite(13,HIGH);
-  
-  int val = !digitalRead(2);
+ int val = !digitalRead(2);
   if(val == !oldVal) {
     Serial.println(val); 
   }
 
   oldVal = val;
+  
   
   delay(50);
 }
