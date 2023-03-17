@@ -1,0 +1,6 @@
+MAC ADDRESS: https://www.fishino.it/forum-it.html?state=forum:8;readthread:384
+
+
+Fishino examples: LongFileName, dataLogger, ReadWrite
+
+Split ssid e password wifi: https://forum.arduino.cc/t/how-to-split-a-string-with-space-and-store-the-items-in-array/888813/8
