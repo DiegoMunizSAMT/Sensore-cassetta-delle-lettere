@@ -109,6 +109,8 @@ mail = auth.settings.mailer
 mail.settings.server = 'smtp.office365.com:587'
 mail.settings.sender = 'sclsamt@hotmail.com'
 mail.settings.login = 'sclsamt:PasswordAAD01+'
+mail.settings.tls = configuration.get('smtp.tls') or False
+mail.settings.ssl = configuration.get('smtp.ssl') or False
 
 # -------------------------------------------------------------------------
 # configure auth policy
