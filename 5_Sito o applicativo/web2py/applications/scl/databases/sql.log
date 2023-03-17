@@ -95,3 +95,24 @@ CREATE TABLE "notificationNotifiesUser"(
     "user_id" INTEGER REFERENCES "auth_user" ("id") ON DELETE CASCADE ON UPDATE CASCADE  
 );
 success!
+timestamp: 2023-03-17T11:00:17.621797
+CREATE TABLE "device_has_sensor"(
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "dev_id" INTEGER REFERENCES "device" ("id") ON DELETE CASCADE ON UPDATE CASCADE  ,
+    "snsr_id" INTEGER REFERENCES "sensor" ("id") ON DELETE CASCADE ON UPDATE CASCADE  
+);
+success!
+timestamp: 2023-03-17T11:00:17.655726
+CREATE TABLE "user_has_device"(
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "user_id" INTEGER REFERENCES "auth_user" ("id") ON DELETE CASCADE ON UPDATE CASCADE  ,
+    "dev_id" INTEGER REFERENCES "device" ("id") ON DELETE CASCADE ON UPDATE CASCADE  
+);
+success!
+timestamp: 2023-03-17T11:00:17.702421
+CREATE TABLE "notification_notifies_user"(
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "notif_id" INTEGER REFERENCES "notification" ("id") ON DELETE CASCADE ON UPDATE CASCADE  ,
+    "user_id" INTEGER REFERENCES "auth_user" ("id") ON DELETE CASCADE ON UPDATE CASCADE  
+);
+success!

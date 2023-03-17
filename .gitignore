@@ -101,7 +101,14 @@ env.bak/
 venv.bak/
 
 # web2py specifics
-**/databases/*.table
-**/databases/sql.log
-**/databases/storage.sqlite
+**/scl/databases/*.table
+**/scl/databases/sql.log
+**/scl/databases/storage.sqlite
 
+**/applications/examples
+**/applications/**/errors/*
+**/applications/**/sessions/**
+**/applications/**/*.bak
+
+**/web2py/examples
+**/web2py/logs

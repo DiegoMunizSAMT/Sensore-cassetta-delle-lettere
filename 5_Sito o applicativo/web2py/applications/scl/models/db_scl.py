@@ -11,14 +11,14 @@ db.define_table('sensor',
 db.define_table('device',
                Field('model', 'string'))
 
-db.define_table('deviceHasSensor',
+db.define_table('device_has_sensor',
                Field('dev_id', 'reference device'),
                Field('snsr_id', 'reference sensor'))
 
-db.define_table('userHasDevice',
+db.define_table('user_has_device',
                Field('user_id', 'reference auth_user'),
                Field('dev_id', 'reference device'))
 
-db.define_table('notificationNotifiesUser',
+db.define_table('notification_notifies_user',
                Field('notif_id', 'reference notification'),
                Field('user_id', 'reference auth_user'))
