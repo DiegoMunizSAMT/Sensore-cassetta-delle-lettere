@@ -203,6 +203,7 @@
 'Remember me (for 30 days)': 'Ricordami (per 30 giorni)',
 'Request reset password': 'Richiedi il reset della password',
 'Reset Password key': 'Resetta chiave Password ',
+'Retrieve Password': 'Retrieve Password',
 'Role': 'Ruolo',
 'Roles': 'Roles',
 'Rows in Table': 'Righe nella tabella',
