@@ -88,7 +88,7 @@ response.form_label_separator = ''
 import os
 if 'PYTHONANYWHERE_DOMAIN' in os.environ:
 	#use mysql db
-	db = DAL('mysql://sclSAMT:Password%261@sclSAMT.mysql.pythonanywhere-services.com/sclSAMT$dbscl', decode_credentials=True)
+	db = DAL('mysql://sclSAMT:Password%261@sclSAMT.mysql.pythonanywhere-services.com/sclSAMT$defautl', decode_credentials=True)
 else:
 	#keep using default sqlite
 	pass
