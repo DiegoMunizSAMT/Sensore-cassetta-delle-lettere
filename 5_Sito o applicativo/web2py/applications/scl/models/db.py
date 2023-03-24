@@ -88,7 +88,7 @@ response.form_label_separator = ''
 import os
 if 'PYTHONANYWHERE_DOMAIN' in os.environ:
 	#use mysql db
-	db = DAL('mysql://sclSAMT:Password%261@sclSAMT.mysql.pythonanywhere-services.com/sclSAMT$defautl', decode_credentials=True)
+	db = DAL('mysql://sclSAMT:Password%261@sclSAMT.mysql.pythonanywhere-services.com/sclSAMT$default', decode_credentials=True)
 else:
 	#keep using default sqlite
 	pass
@@ -111,6 +111,11 @@ mail.settings.sender = configuration.get('smtp.sender')
 mail.settings.login = configuration.get('smtp.login')
 mail.settings.tls = configuration.get('smtp.tls') or False
 mail.settings.ssl = configuration.get('smtp.ssl') or False
+# -------------------------------------------------------------------------
+# send email
+# -------------------------------------------------------------------------
+
+
 # -------------------------------------------------------------------------
 # configure auth policy
 # -------------------------------------------------------------------------
