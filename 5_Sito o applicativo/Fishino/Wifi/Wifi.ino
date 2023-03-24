@@ -244,25 +244,37 @@ void setup()
   // WIFI
   Fishino.setMode(STATION_MODE);
   
-  printSDCardFiles();
-  deleteSDCardFile();
-  writeSDCardFile();
-  connectWiFi(parseSSIDFromSDCardFile(readSDCardFile()), parsePasswordFromSDCardFile(readSDCardFile()));
+  //printSDCardFiles();
+  //deleteSDCardFile();
+  //writeSDCardFile();
+  //connectWiFi(parseSSIDFromSDCardFile(readSDCardFile()), parsePasswordFromSDCardFile(readSDCardFile()));
 }
 
 //------------------------------------------------------------------------------
 
-boolean oldSensorVal = 0;
+int prevSensorVal = HIGH;
+unsigned long blockTime = 0;
 void loop ()
 {
-  digitalWrite(4,HIGH);
+  /* IR Sensor
+  int currentSensorVal = !digitalRead(2); // 1 = Recives IR, 0 = Doesn't recive IR 
 
-  int currentSensorVal = !digitalRead(2);
-  if(currentSensorVal == !oldSensorVal) {
-    Serial.println(currentSensorVal);
+  if (currentSensorVal == LOW && prevSensorVal == HIGH) {
+    blockTime = millis();
+  } 
+  else {
+    if (millis() - blockTime > 1000) {
+      Serial.println("Object detected!");
+      blockTime = millis();
+    }
   }
-  oldSensorVal = currentSensorVal;
-  delay(50);
+
+  prevSensorVal = currentSensorVal;
+  
+  */
+
+  int currentSensorVal = digitalRead(2);
+  Serial.println(currentSensorVal);
 }
 
 //------------------------------------------------------------------------------
