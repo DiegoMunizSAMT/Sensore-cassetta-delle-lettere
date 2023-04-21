@@ -5,10 +5,14 @@
 #include "FreeStack.h"
 
 //----------------------------Other----------------------------
+FishinoClient client;
+
 String ssid = "";
 String password = "";
 String api_key = "";
 String serverPath = "";
+char server[] = "";
+
 SdFat SD;
 File file;
 SdFile dirFile;
@@ -29,6 +33,8 @@ uint16_t n = 0;
 const uint16_t nMax = 10;
 // Position of file's directory entry.
 uint16_t dirIndex[nMax];
+// l'ultima volta che vi siete connessi al server, in millisecondi
+unsigned long lastConnectionTime = 0;
 
 
 void printSDCardFiles(){
@@ -59,14 +65,12 @@ void printSDCardFiles(){
     file.close();
   }
 }
-/*
-String readSDCardFile(int c = 0) {  
+
+String readSDCardFile(int c = 0) {
   if (c >= n) {
     Serial.println(F("Invald number"));
     return;
   }
-  //Serial.println();
-
   String fileContent = "";
   char last = 0;
   file = SD.open("config.txt");
@@ -76,22 +80,6 @@ String readSDCardFile(int c = 0) {
   }
   file.close();
   delay(100);
-  return fileContent;
-}*/
-
-String readSDCardFile(){
-  file = SD.open("test.txt");
-  String fileContent = "";
-  if (file) {
-    while (file.available()) {
-      fileContent += file.read();
-    }
-    file.close();
-    delay(100);
-  } else {
-    // if the file didn't open, print an error:
-    Serial.println("error opening config.txt");
-  }
   return fileContent;
 }
 
@@ -117,25 +105,22 @@ void parseFromSDCardFile() {
     }
   }
 }
-
 //------------------------------------------------------------
 
 //----------------------------WIFI----------------------------
-void connectWiFi(String ssid, String password) {
+void connectWiFi(String ssid,String password) {
   while (!Fishino.begin(ssid.c_str(), password.c_str())) {} 
   Fishino.staStartDHCP();
-  Serial.print("Connecting to WIFI..");
+  Serial.print("Connecting to WIFI");
   while (Fishino.status() != STATION_GOT_IP) {
     Serial.print(".");
-    delay(300);
+    delay(650);
   }
   Serial << F("OK\r\n");
 }
 //------------------------------------------------------------
-FishinoClient client;
 
-unsigned long lastConnectionTime = 0;
-/*
+
 void dataSender(){
   client.stop();
 
@@ -143,7 +128,6 @@ void dataSender(){
   {
     Serial << F("connecting...\n");
     
-    // send the HTTP PUT request:
     // invia la richiesta HTTP:
     client << F("POST /w2p/scl/default/devices/api/recorded_value HTTP/1.1\r\n");
     client << F("Host: www.fishino.it\r\n");
@@ -154,7 +138,7 @@ void dataSender(){
   }
 
   lastConnectionTime = millis();
-}*/
+}
 
 void setup()
 {
@@ -173,24 +157,24 @@ void setup()
   password = strs[1];
   api_key = strs[2];
   serverPath = strs[3];
-  Serial.println(strs[4]);
-  //server = strs[4];
-  //connectWiFi(ssid,password);
-
-  readSDCardFile();
+  String stringServer = strs[4];
+  stringServer.toCharArray(server,stringServer.length());
+  connectWiFi(ssid,password);
 }
 
 //------------------------------------------------------------------------------
 
-const unsigned long postingInterval = 2L * 1000L;
-
 void loop ()
 {
   int currentSensorVal = digitalRead(2);
-  
-  if (millis() - lastConnectionTime > postingInterval)
-  {
-    //dataSender();
+  int oldSensorVal = 1;
+  if(currentSensorVal != oldSensorVal){
+    if (!currentSensorVal)
+    {
+      Serial.println("invio");
+      dataSender();
+    }
+    oldSensorVal = currentSensorVal;
   }
 }
 
