@@ -127,14 +127,17 @@ void dataSender(){
   if (client.connect(server, 80))
   {
     Serial << F("connecting...\n");
+    String json_data = "{'api_key':" + api_key + ",'mail_present':'"+"'yes'}";
     
     // invia la richiesta HTTP:
-    client << F("POST /w2p/scl/default/devices/api/recorded_value HTTP/1.1\r\n");
+    client << F("POST /w2p/scl/default/api/recorded_value HTTP/1.1\r\n");
     client << F("Host: www.fishino.it\r\n");
     client << F("Content-Type: application/json\r\n");
     client << F("User-Agent: FishinoWiFi/1.1\r\n");
     client << F("Connection: close\r\n");
     client.println();
+  }else{
+    Serial.println("connection error");
   }
 
   lastConnectionTime = millis();
@@ -163,18 +166,30 @@ void setup()
 }
 
 //------------------------------------------------------------------------------
-
+int oldSensorVal = 1;
+int inviato = 0;
 void loop ()
 {
   int currentSensorVal = digitalRead(2);
-  int oldSensorVal = 1;
+  Serial.print("valore sensore: ");
+  Serial.println(currentSensorVal);
+
+  /*
+   * non invia il pacchetto quando c'è un cambiamento di stato
+   * TODO
+   */
   if(currentSensorVal != oldSensorVal){
-    if (!currentSensorVal)
+    Serial.println("cambiamento di stato");
+    if (currentSensorVal == 0)
     {
       Serial.println("invio");
-      dataSender();
+      inviato = 1;
+      //dataSender();
     }
-    oldSensorVal = currentSensorVal;
+    else {
+      oldSensorVal = currentSensorVal;
+      inviato = 0;
+    }
   }
 }
 
