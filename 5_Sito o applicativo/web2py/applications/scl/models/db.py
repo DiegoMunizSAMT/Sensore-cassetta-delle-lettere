@@ -86,12 +86,6 @@ response.form_label_separator = ''
 # -------------------------------------------------------------------------
 
 import os
-if 'PYTHONANYWHERE_DOMAIN' in os.environ:
-	#use mysql db
-	db = DAL('mysql://sclSAMT:Password%261@sclSAMT.mysql.pythonanywhere-services.com/sclSAMT$default', decode_credentials=True)
-else:
-	#keep using default sqlite
-	pass
 
 # host names must be a list of allowed host names (glob syntax allowed)
 auth = Auth(db, host_names=configuration.get('host.names'))

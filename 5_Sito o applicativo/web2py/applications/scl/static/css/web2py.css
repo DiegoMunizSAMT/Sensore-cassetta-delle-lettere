@@ -1,9 +1,14 @@
 /** these MUST stay **/
+body {background-color: #1c1d26}
 a {text-decoration:none; white-space:nowrap}
 a:hover {text-decoration:underline}
 a.button {text-decoration:none}
-h1,h2,h3,h4,h5,h6 {margin:0.5em 0 0.25em 0; display:block;
-  font-family:Helvetica}
+h1,h2,h3,h4,h5,h6 {
+    margin:0.5em 0 0.25em 0;
+    display:block;
+    font-family:Helvetica;
+    color:white
+}
 h1 {font-size:4.00em}
 h2 {font-size:3.00em}
 h3 {font-size:2.00em}
@@ -68,7 +73,7 @@ audio {width:200px}
 
 
 fieldset {padding:16px; border-top:1px #DEDEDE solid}
-fieldset legend {text-transform:uppercase; font-weight:bold; padding:4px 16px 4px 16px; background:#f1f1f1}
+fieldset legend {text-transform:uppercase; font-weight:bold; padding:4px 16px 4px 16px; background:#1c1d26}
 
 /* fix ie problem with menu */
 
@@ -78,7 +83,7 @@ td.w2p_fl {text-align:left}
 td.w2p_fl, td.w2p_fw {padding-right:7px}
 td.w2p_fl,td.w2p_fc {padding-top:4px}
 div.w2p_export_menu {margin:5px 0}
-div.w2p_export_menu a, div.w2p_wiki_tags a, div.w2p_cloud a {margin-left:5px; padding:2px 5px; background-color:#f1f1f1; border-radius:5px; -moz-border-radius:5px; -webkit-border-radius:5px;}
+div.w2p_export_menu a, div.w2p_wiki_tags a, div.w2p_cloud a {margin-left:5px; padding:2px 5px; background-color:#1c1d26; border-radius:5px; -moz-border-radius:5px; -webkit-border-radius:5px;}
 
 /* tr#submit_record__row {border-top:1px solid #E5E5E5} */
 #submit_record__row td {padding-top:.5em}
@@ -100,8 +105,8 @@ div.w2p_flash {
     margin:0px 0px 10px 10px;
     vertical-align:middle;
     cursor:pointer;
-    color:#fff;
-    background-color:#000;
+    color:white;
+    background-color:#1c1d26;
     border:2px solid #fff;
     border-radius:8px;
     -o-border-radius: 8px;
@@ -133,7 +138,7 @@ div.error {
 .topbar {
     padding:10px 0;
     width:100%;
-    color:#959595;
+    color:white;
     vertical-align:middle;
     padding:auto;
     background-image:-khtml-gradient(linear,left top,left bottom,from(#333333),to(#222222));
@@ -150,13 +155,13 @@ div.error {
 }
 
 .topbar a {
-    color:#e1e1e1;
+    color:white;
 }
 
 #navbar {float:right; padding:5px; /* same as superfish */}
 
 .statusbar {
-    background-color:#F5F5F5;
+    background-color:#1c1d26;
     margin-top:1em;
     margin-bottom:1em;
     padding:.5em 1em;
@@ -188,12 +193,12 @@ div.error {
 .web2py_grid .web2py_form td {vertical-align: top;}
 
 .web2py_grid thead th,.web2py_grid tfoot td {
-    background-color:#EAEAEA;
+    background-color:#1c1d26;
     padding:10px 5px 10px 5px;
 }
 
-.web2py_grid tr.odd {background-color:#F9F9F9}
-.web2py_grid tr:hover {background-color:#F5F5F5}
+.web2py_grid tr.odd {background-color:#1c1d26}
+.web2py_grid tr:hover {background-color:#1c1d26}
 
 /*
 .web2py_breadcrumbs a {
@@ -259,12 +264,16 @@ div.error {
 }
 
 /*Fix firefox problem*/
-.web2py_table {clear:both; display:block}
+.web2py_table {
+    clear:both;
+    display:block;
+    background-color:#1c1d26
+}
 
 .web2py_paginator {
     padding:5px;
     text-align:right;
-    background-color:#f2f2f2;
+    background-color:#1c1d26;
 
 }
 .web2py_paginator ul {

@@ -7,11 +7,14 @@
 //----------------------------Other----------------------------
 FishinoClient client;
 
+String strs[5];
 String ssid = "";
 String password = "";
 String api_key = "";
 String serverPath = "";
-char server[] = "";
+String stringServer = "";
+char server[50];
+
 
 SdFat SD;
 File file;
@@ -36,26 +39,22 @@ uint16_t dirIndex[nMax];
 // l'ultima volta che vi siete connessi al server, in millisecondi
 unsigned long lastConnectionTime = 0;
 
-
 void printSDCardFiles(){
-  Serial.print("Initializing SD card...");
+  Serial.print(F("Initializing SD card..."));
   if (!SD.begin(SD_CS_PIN, SD_SCK_MHZ(15))) {
-    Serial.println("initialization failed!");
+    Serial.println(F("initialization failed!"));
     SD.initErrorHalt();
   }
-  Serial.println("Initialization done.");
+  Serial.println(F("Initialization done."));
   // List files in root directory.
   if (!dirFile.open("/", O_READ)) {
-    SD.errorHalt("open root failed");
+    SD.errorHalt(F("open root failed"));
   }
   while (n < nMax && file.openNext(&dirFile, O_READ)) {
-
     // Skip directories and hidden files.
     if (!file.isSubDir() && !file.isHidden()) {
-
       // Save dirIndex of file in directory.
       dirIndex[n] = file.dirIndex();
-
       // Print the file number and name.
       Serial.print(n++);
       Serial.write(' ');
@@ -78,69 +77,81 @@ String readSDCardFile(int c = 0) {
   for (int k = 0; k < 500 && (c = file.read()) > 0; k++)  {
     fileContent += (char)c;
   }
+  Serial.print(F("file content: "));
+  Serial.println(fileContent);
   file.close();
-  delay(100);
   return fileContent;
 }
 
-String strs[5];
-
 void parseFromSDCardFile() {
   String str = readSDCardFile();
-  int StringCount = 0;
-  
-  // Split the string into substrings
-  while (str.length() > 0)
-  {
-    int index = str.indexOf(' ');
-    if (index == -1) // No space found
-    {
-      strs[StringCount++] = str;
-      break;
+  int i = 0;
+  int j = 0;
+  String temp = "";
+  while(i < str.length()-1){
+    if(str.charAt(i) == ','){
+      strs[j]= temp;
+      temp="";
+      j++;
+    }else{
+      temp += str.charAt(i);
     }
-    else
-    {
-      strs[StringCount++] = str.substring(0, index);
-      str = str.substring(index+1);
-    }
+    i++;
   }
 }
+
 //------------------------------------------------------------
 
 //----------------------------WIFI----------------------------
 void connectWiFi(String ssid,String password) {
   while (!Fishino.begin(ssid.c_str(), password.c_str())) {} 
   Fishino.staStartDHCP();
-  Serial.print("Connecting to WIFI");
+  Serial.print(F("Connecting to WIFI"));
   while (Fishino.status() != STATION_GOT_IP) {
-    Serial.print(".");
+    Serial.print(F("."));
     delay(650);
   }
-  Serial << F("OK\r\n");
+  Serial.println(F("OK"));
 }
 //------------------------------------------------------------
 
-
 void dataSender(){
-  client.stop();
-
-  if (client.connect(server, 80))
-  {
-    Serial << F("connecting...\n");
-    String json_data = "{'api_key':" + api_key + ",'mail_present':'"+"'yes'}";
-    
-    // invia la richiesta HTTP:
-    client << F("POST /w2p/scl/default/api/recorded_value HTTP/1.1\r\n");
-    client << F("Host: www.fishino.it\r\n");
-    client << F("Content-Type: application/json\r\n");
-    client << F("User-Agent: FishinoWiFi/1.1\r\n");
-    client << F("Connection: close\r\n");
-    client.println();
-  }else{
-    Serial.println("connection error");
+  
+  if (client.status()) {
+    client.stop();
   }
+  
+  char json_data[100] = "{\"api_key\":\"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\",\"mail_present\":\"yes\"}";
 
-  lastConnectionTime = millis();
+  int key_index = 0;
+  char placeholder = 'x';
+  for (int i=0; i<sizeof(json_data); i++){
+    char found = json_data[i];
+    char repl = api_key.charAt(key_index);
+    if (found == placeholder){
+      json_data[i] = repl;
+      key_index++;
+    }
+  }
+  Serial.print(F("json_data: "));
+  Serial.println(json_data);  
+  
+  if (client.connect(server, 80)){
+    client.print(F("POST "));
+    client.print(serverPath);
+    client.println(F(" HTTP/1.1"));
+    client.print(F("Host: "));
+    client.println(server);
+    client.println(F("User-Agent: FISHINO_CA"));
+    client.println(F("Content-Type: application/json; charset=utf-8"));
+    client.println();
+    client.print(json_data);
+    client.flush();
+    client.stop();    
+  } else {
+    Serial.println(F("no connection to server"));
+  }
+  Serial.println(F("end datasender"));
 }
 
 void setup()
@@ -156,41 +167,44 @@ void setup()
   
   printSDCardFiles();
   parseFromSDCardFile();
+  
   ssid = strs[0];
   password = strs[1];
   api_key = strs[2];
   serverPath = strs[3];
-  String stringServer = strs[4];
-  stringServer.toCharArray(server,stringServer.length());
+  stringServer = strs[4];
+  
+  for (int i=0; i<stringServer.length(); i++){
+    char c = stringServer.charAt(i);
+    server[i] = c;
+  }
+
+  Serial.print(F("server (string) : "));
+  Serial.println(stringServer);
+  Serial.print(F("server (char) : "));
+  Serial.println(server);  
+  Serial.print(F("server path: "));
+  Serial.println(serverPath);
+  Serial.print(F("api: "));
+  Serial.println(api_key);
+  Serial.print(F("SSID: "));
+  Serial.println(ssid);
+  Serial.print(F("password: "));
+  Serial.println(password);
+  
   connectWiFi(ssid,password);
 }
-
 //------------------------------------------------------------------------------
 int oldSensorVal = 1;
-int inviato = 0;
 void loop ()
 {
   int currentSensorVal = digitalRead(2);
-  Serial.print("valore sensore: ");
-  Serial.println(currentSensorVal);
-
-  /*
-   * non invia il pacchetto quando c'è un cambiamento di stato
-   * TODO
-   */
-  if(currentSensorVal != oldSensorVal){
-    Serial.println("cambiamento di stato");
-    if (currentSensorVal == 0)
-    {
-      Serial.println("invio");
-      inviato = 1;
-      //dataSender();
-    }
-    else {
-      oldSensorVal = currentSensorVal;
-      inviato = 0;
-    }
+  if(currentSensorVal == 0 && oldSensorVal == 1){
+    Serial.println(F("invio"));
+    dataSender();
+    oldSensorVal = 0;
+  } else if (currentSensorVal == 1 && oldSensorVal == 0) {
+    oldSensorVal = 1;
   }
 }
-
 //------------------------------------------------------------------------------

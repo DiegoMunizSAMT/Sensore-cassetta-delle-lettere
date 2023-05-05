@@ -1,34 +1,40 @@
 {{extend 'layout.html'}}
 <style>
-    body{
-        background-color: #1c1d26;
-    }
 #customers {
   font-family: Arial, Helvetica, sans-serif;
   border-collapse: collapse;
   width: 50%;
+  margin-left: auto;
   margin-right: auto;
 }
 
 td, th {
   border: 1px solid #ddd;
   padding: 8px;
-  text-align: left;
 }
 
-tr:hover {
-    background-color: dodgerblue;
-    text-align: left;
-}
+tr:hover {background-color: dodgerblue;}
 
 th {
   padding-top: 12px;
   padding-bottom: 12px;
+  text-align: left;
   background-color: #04AA6D;
   color: black;
-  text-align: left;
+  text-align: center;
 }
 </style>
 
-<h1 style= "color: white">LISTA NOTIFICHE</h1>
+<h1>LISTA NOTIFICHE</h1>
 {{=grid}}
+<!--
+<table id="customers">
+  <tr>
+    <th>Data</th>
+    <th>Commento</th>
+  </tr>
+  <tr id = "dati">
+    <td>19.04.2023</td>
+    <td>Ciao</td>
+  </tr>
+</table>

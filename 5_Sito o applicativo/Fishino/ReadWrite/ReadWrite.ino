@@ -54,11 +54,11 @@ void setup() {
   // if the file opened okay, write to it:
   if (myFile) {
     Serial.print("Writing to config.txt...");
-    String configData = "MOD340";
-    configData += " passM340";
-    configData += " bad6f4d7-3c35-4d34-92c0-f18839a5372a";
-    configData += " /w2p/scl/default/devices/api/recorded_value";
-    configData += " 164.128.168.41";
+    String configData = "MOD340,";
+    configData += "passM340,";
+    configData += "bad6f4d7-3c35-4d34-92c0-f18839a5372a,";
+    configData += "/w2p/scl/default/api/recorded_value,";
+    configData += "164.128.168.41,";
     myFile.println(configData);
     // close the file:
     myFile.close();

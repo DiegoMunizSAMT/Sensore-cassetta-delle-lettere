@@ -1,6 +1,6 @@
 {{extend 'layout.html'}}
 
-<div class="row"> 
+<div class="row">
   <div id="web2py_user_form" class="col-lg-6" style="margin: 0 auto 5px auto;">
     <h2>
       {{=T('Sign Up') if request.args(0) == 'register' else T('Log In') if request.args(0) == 'login' else T(request.args(0).replace('_',' ').title())}}

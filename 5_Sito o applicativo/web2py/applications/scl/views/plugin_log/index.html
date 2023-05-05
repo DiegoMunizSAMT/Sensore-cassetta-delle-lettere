@@ -1,0 +1,9 @@
+{{extend 'layout.html'}}
+
+<h1>Application log</h1>
+<div class='row'>
+<button type="button" class="btn btn-danger pull-left" onclick = "ajax('{{=URL(c='plugin_log', f='clear_app_log_data', args=['debug'])}}', [], 'clear_log')">Clear log</button>
+</div>
+<div class='row' style='white-space: pre-wrap; word-break: keep-all;'>
+<pre>{{=log_data}}</pre>
+</div>

@@ -1,0 +1,14 @@
+2023-05-05 14:37:26,757 | WARNING | 530873 | 140198151165504 | plugin_log.py | clear_app_log_data():49 | clear_log
+2023-05-05 14:37:26,771 | INFO | 530873 | 140198151165504 | plugin_log.py | clear_app_log_data():63 | logfile cleared
+2023-05-05 14:39:45,655 | WARNING | 530873 | 140198201521728 | plugin_log.py | clear_app_log_data():49 | clear_log
+2023-05-05 14:39:45,659 | INFO | 530873 | 140198201521728 | plugin_log.py | clear_app_log_data():63 | logfile cleared
+2023-05-05 14:41:55,543 | WARNING | 530873 | 140198184736320 | plugin_log.py | clear_app_log_data():49 | clear_log
+2023-05-05 14:41:55,546 | INFO | 530873 | 140198184736320 | plugin_log.py | clear_app_log_data():63 | logfile cleared
+2023-05-05 14:43:56,644 | WARNING | 530873 | 140198420227648 | plugin_log.py | clear_app_log_data():49 | clear_log
+2023-05-05 14:43:56,647 | INFO | 530873 | 140198420227648 | plugin_log.py | clear_app_log_data():63 | logfile cleared
+2023-05-05 14:43:58,402 | WARNING | 530873 | 140198420227648 | plugin_log.py | clear_app_log_data():49 | clear_log
+2023-05-05 14:43:58,405 | INFO | 530873 | 140198420227648 | plugin_log.py | clear_app_log_data():63 | logfile cleared
+2023-05-05 14:46:28,821 | WARNING | 530873 | 140198167950912 | plugin_log.py | clear_app_log_data():49 | clear_log
+2023-05-05 14:46:28,825 | INFO | 530873 | 140198167950912 | plugin_log.py | clear_app_log_data():63 | logfile cleared
+2023-05-05 14:51:33,150 | WARNING | 530873 | 140198151165504 | plugin_log.py | clear_app_log_data():49 | clear_log
+2023-05-05 14:51:33,152 | INFO | 530873 | 140198151165504 | plugin_log.py | clear_app_log_data():63 | logfile cleared

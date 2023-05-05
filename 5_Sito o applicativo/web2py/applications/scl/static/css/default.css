@@ -10,6 +10,7 @@
 
 	html, body {
 		background: #1c1d26;
+        color: white;
 	}
 
 	body.is-preload *, body.is-preload *:before, body.is-preload *:after {
@@ -31,19 +32,23 @@
 		line-height: 1.75em;
 	}
 
+
 	a {
 		-moz-transition: border-color 0.2s ease-in-out, color 0.2s ease-in-out;
 		-webkit-transition: border-color 0.2s ease-in-out, color 0.2s ease-in-out;
 		-ms-transition: border-color 0.2s ease-in-out, color 0.2s ease-in-out;
 		transition: border-color 0.2s ease-in-out, color 0.2s ease-in-out;
-		color: #e44c65;
+		color: 	#0080ff;
 		text-decoration: none;
 	}
 
 		a:hover {
-			color: #e44c65 !important;
+			color: 	#0080ff !important;
 			border-bottom-color: transparent;
 		}
+    td{
+        color: 	white !important;
+    }
 
 	strong, b {
 		color: #ffffff;
@@ -59,14 +64,14 @@
 	}
 
 	h1, h2, h3, h4, h5, h6 {
-		color: #ffffff;
+		color: white;
 		font-weight: 300;
 		line-height: 1em;
 		margin: 0 0 1em 0;
 	}
 
 		h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
-			color: inherit;
+			color: white;
 			border: 0;
 		}
 
@@ -159,11 +164,11 @@
 	.align-right {
 		text-align: right;
 	}
-	
+
 	.color-black {
 		color: black;
 	}
-	
+
 /* Banner */
 
 	#banner {
@@ -245,7 +250,7 @@
 	body.is-touch #banner {
 		background-attachment: scroll;
 	}
-	
+
 /* XLarge */
 
 	@media screen and (max-width: 1680px) {
@@ -552,7 +557,7 @@
 			}
 
 				#titleBar .title {
-					color: #ffffff;
+					color: white;
 					display: block;
 					font-weight: 300;
 					height: 44px;

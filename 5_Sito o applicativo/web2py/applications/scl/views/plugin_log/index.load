@@ -1,0 +1,37 @@
+<!-- Button trigger modal -->
+<button class="btn btn-primary" type="button" data-toggle="modal" data-target="#logmodal" aria-expanded="false" aria-controls="log_collapse">
+<i class="glyphicon glyphicon-list"></i> Logs
+</button>
+
+<!-- Modal -->
+	<div class="modal fade" id="logmodal" tabindex="-1" role="dialog" aria-labelledby="logmodal">
+	  <div class="modal-dialog modal-xl modal-dialog-scrollable modal-dialog-centered" role="document">
+		<div class="modal-content">
+		  <div class="modal-header">
+			<h4 class="modal-title" id="myModalLabel">Application log</h4>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		  </div>
+		  <div class="modal-body">
+			<pre id="log_container" class="w2p_component_stop">
+			{{=LOAD(c='plugin_log', f='app_log_data', args=['debug'], ajax=True, target='log_container', times='infinity', timeout=3000)}}
+			</pre>
+		  </div>
+		  <div class="modal-footer">
+			<button type="button" class="btn btn-danger pull-left" onclick = "ajax('{{=URL(c='plugin_log', f='clear_app_log_data', args=['debug'])}}', [], 'clear_log');jQuery('#log_container').get(0).reload();">Clear log</button>
+			<a type="button" class="btn btn-default" href="{{=URL(c='plugin_log', f='index.html')}}" target="_blank">Open in page</a>
+			<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+		  </div>
+		</div>
+	  </div>
+	  <script>
+		$('#logmodal').on('hide.bs.modal', function (e) {
+			$('#log_container').addClass('w2p_component_stop');
+		})
+		$('#logmodal').on('show.bs.modal', function (e) {
+			$('#log_container').removeClass('w2p_component_stop');
+			$('#log_container').html('<div data-w2p_remote="{{=URL(c='plugin_log', f='app_log_data', args=['debug'])}}" data-w2p_timeout="3000" data-w2p_times="Infinity" id="log_container">loading...</div>');
+			$.web2py.component_handler($('#log_container').get(0))	//component_handler reads the inserted component div and creates a web2py.component
+		})	  		
+	  </script>
+	  
+	</div>

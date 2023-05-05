@@ -1,6 +1,8 @@
+body {background-color: #1c1d26}
 label, th {
     font-weigth: bold;
     white-space: nowrap;
+    color: white;
 }
 div.w2p_flash {
     background-image: none;
@@ -8,7 +10,7 @@ div.w2p_flash {
     -o-border-radius: 4px;
     -moz-border-radius: 4px;
     -webkit-border-radius: 4px;
-    color: #333;
+    color: white;
     font-weight: 400;
     min-width: 28px;
     max-width: 300px;
@@ -51,8 +53,8 @@ div.w2p_flash.alert {
     right: 75px;
     cursor: pointer;
     z-index: 1000;
-    background-color: #f9edbe;
-    border-color: #f0c36d;
+    /*background-color: #f9edbe;*/
+    border-color: white;
 }
 .w2p-toolbar-hidden {
     margin: 10px;
@@ -93,7 +95,7 @@ select.autocomplete {
     padding: 6px 12px;
 }
 #web2py-logo {
-    color: #c6cecc;
+    color: white;
 }
 #web2py-logo b {
     display: inline-block;
@@ -101,10 +103,10 @@ select.autocomplete {
 }
 #web2py-logo b>span {
     font-size: 22px;
-    color: #FFF;
+    color: white;
 }
 #web2py-logo:hover {
-    color: #FFF;
+    color: white;
 }
 .footer > .row {
     padding-left: 15px;
@@ -199,14 +201,14 @@ div.error_wrapper {
 }
 .web2py_grid thead th,
 .web2py_grid tfoot td {
-    background-color: #EAEAEA;
+    background-color: #1c1d26;
     padding: 10px 5px;
 }
 .web2py_grid tr.odd {
-    background-color: #F9F9F9;
+    background-color: #1c1d26;
 }
 .web2py_grid tr:hover {
-    background-color: #F5F5F5;
+    background-color: #1c1d26;
 }
 .web2py_console form {
     width: 100%;
@@ -270,6 +272,7 @@ div.error_wrapper {
 }
 li.w2p_grid_breadcrumb_elem {
     display: inline-block;
+    color: white;
 }
 .web2py_console input,
 .web2py_console select,

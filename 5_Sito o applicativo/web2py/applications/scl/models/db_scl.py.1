@@ -1,14 +1,13 @@
 import uuid
 
 db.define_table('notification',
-    Field('content_value', 'text')
-)
+               Field('content_value', 'text')
+               )
 
 db.define_table('device',
-    Field('model', 'string'),
-    Field('api_key', 'string'),
-    format=lambda r: format_device(r)
-
+               Field('model', 'string'),
+               Field('api_key', 'string'),
+               format=lambda r: format_device(r)
                )
 db.device.model.requires = IS_IN_SET(('MBoxRobot Mk I', 'Mailmaster v1', 'MBoxRobot Mk II'))
 db.device._after_insert.append( lambda record, record_id: generate_api_key(record, record_id))
@@ -23,16 +22,16 @@ def generate_api_key(record, record_id):
 
 db.define_table('recorded_value',
     Field('device_id', 'reference device'),
-    Field('recorded_action', 'string'),
-    Field('recorded_value', 'string'),
+    Field('recored_action', 'string'),
+    Field('recored_value', 'string'),
     Field('arrival_time', 'datetime')
 )
 db.recorded_value.id.listable = False
 
 db.define_table('user_has_device',
-    Field('user_id', 'reference auth_user'),
-    Field('dev_id', 'reference device')
-)
+               Field('user_id', 'reference auth_user'),
+               Field('dev_id', 'reference device')
+               )
 db.user_has_device.id.listable = False
 
 db.define_table('notification_notifies_user',

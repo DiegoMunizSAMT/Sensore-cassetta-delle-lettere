@@ -54,6 +54,7 @@
 'appadmin is disabled because insecure channel': 'amministrazione app (appadmin) disabilitata: comunicazione non sicura',
 'Application': 'Application',
 'application "%s" uninstalled': 'applicazione "%s" disinstallata',
+'application %(appname)s installed with md5sum: %(digest)s': 'application %(appname)s installed with md5sum: %(digest)s',
 'Application cannot be generated in demo mode': 'Application cannot be generated in demo mode',
 'application compiled': 'applicazione compilata',
 'Application exists already': 'Application exists already',

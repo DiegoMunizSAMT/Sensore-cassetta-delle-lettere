@@ -20,5 +20,5 @@ if not configuration.get('app.production'):
             (T('List'), False, URL('default', 'notif_list')),
             (T('Calendar'), False, URL('default', 'notif_calendar')),
         ]),
-        (T('Settings'), False, URL('default', 'settings')),
+        (T('Devices'), False, URL('default', 'devices')),
     ]

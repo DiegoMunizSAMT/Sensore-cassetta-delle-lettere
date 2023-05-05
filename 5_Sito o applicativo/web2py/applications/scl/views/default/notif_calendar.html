@@ -1,0 +1,40 @@
+{{extend 'layout.html'}}
+
+<head>
+<meta charset='utf-8' />
+<script src="{{=URL('static','js/fullcalendar-6.1.5/index.global.js')}}"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var calendarEl = document.getElementById('calendar');
+
+    var calendar = new FullCalendar.Calendar(calendarEl, {
+      initialDate: '{{=today}}',
+      editable: false,
+      selectable: true,
+      businessHours: false,
+      dayMaxEvents: true, // allow "more" link when too many events
+      events: [
+        {{=XML(events)}}
+      ]
+    });
+      
+    calendar.render();
+  });
+</script> 
+<style>
+  body {
+    padding: 0;
+  }
+
+  #calendar {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+</style>
+</head>
+<body>
+
+  <div id='calendar'></div>
+
+  <p id="debug" style="color: red"></p>
+</body>
